@@ -3,15 +3,16 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import { Row, Well, Button } from "react-bootstrap"
 import FloaterContent from "./Floater"
-import { openCommentBox } from "../containers/Items/action_creators.js"
 
+import { openCommentBox } from "../containers/Items/action_creators.js"
 import { getItems } from "../containers/Items/reducer"
+
 const MyButton = styled(Button)`
    color: tomato;
    border-color: tomato;
  `
 
-const Item = ({id , text, showComments, openCommentBox }) => (
+const Item = ({ id, text, showComments, openCommentBox }) => (
   <Row>
     <Well>
       <h1> {text} </h1>
@@ -25,10 +26,7 @@ const Item = ({id , text, showComments, openCommentBox }) => (
 const ItemsStructure = ({ items, openCommentBox }) => (
   <Row>
     {items.map(item => (
-      <Item key={item.id}
-        {...item}
-        openCommentBox={openCommentBox}
-      />
+      <Item key={item.id} {...item} openCommentBox={openCommentBox} />
     ))}
   </Row>
 )

@@ -1,7 +1,7 @@
 import { Well, Button } from "react-bootstrap"
 import React from "react"
 import { connect } from "react-redux"
-import { openModal } from "../containers/Items/action_creators.js"
+import { openModal } from "../containers/AddItemModal/action_creators"
 
 const AddItem = ({ openModal }) => {
   return (
@@ -20,6 +20,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
-const AddItemSection = connect(_ => _ , mapDispatchToProps)(AddItem)
+const AddItemSection = connect(_ => _, mapDispatchToProps)(AddItem)
 
 export default AddItemSection

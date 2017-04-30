@@ -2,8 +2,9 @@ import React from "react"
 import { Modal, Button } from "react-bootstrap"
 import { connect } from "react-redux"
 
-import { addItem, closeModal } from "../containers/Items/action_creators.js"
-import { getShowAddItemModel } from "../containers/Items/reducer.js"
+import { closeModal } from "../containers/AddItemModal/action_creators"
+import { addItem } from "../containers/Items/action_creators"
+import { getShowAddItemModel } from "../containers/AddItemModal/reducer"
 
 class ItemModal extends React.Component {
   constructor(props) {
