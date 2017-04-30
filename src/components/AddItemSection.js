@@ -20,6 +20,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
-const AddItemSection = connect(() => {}, mapDispatchToProps)(AddItem)
+const AddItemSection = connect(_ => _ , mapDispatchToProps)(AddItem)
 
 export default AddItemSection

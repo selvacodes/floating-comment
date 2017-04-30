@@ -28,7 +28,7 @@ class ItemModal extends React.Component {
   render() {
     return (
       <div>
-        <Modal show={this.props.showModal} bsSize="medium">
+        <Modal show={this.props.showModal} bsSize="small">
           <Modal.Header>
             <Modal.Title>Modal title</Modal.Title>
           </Modal.Header>

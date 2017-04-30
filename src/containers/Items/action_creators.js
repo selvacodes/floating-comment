@@ -20,9 +20,9 @@ export function openModal() {
   }
 }
 
-export function openCommentBox(text) {
+export function openCommentBox(id) {
   return {
     type: OPEN_COMMENT,
-    text
+    id
   }
 }

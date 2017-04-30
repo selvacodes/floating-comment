@@ -1,9 +1,10 @@
 //@flow
 
 import { ADD_ITEM, CLOSE_MODAL, OPEN_MODAL, OPEN_COMMENT } from "./actions"
+import { combineReducers  } from "react-redux"
 
 type item = {
-  id: string,
+  id: number,
   text: string,
   showComments: boolean
 }
@@ -22,8 +23,8 @@ const initialState = {
   header: "Floating comments",
   showAddItemModal: false,
   items: [
-    { text: "First", showComments: false },
-    { text: "Second", showComments: false }
+    { id: 1, text: "First", showComments: false },
+    { id: 2, text: "Second", showComments: false }
   ]
 }
 
@@ -33,7 +34,10 @@ function itemReducer(state = initialState, action): appState {
     case ADD_ITEM:
       return {
         ...state,
-        items: [...state.items, { text: action.text }],
+        items: [
+          ...state.items,
+          { id: state.items.length + 1, text: action.text, showComments: false }
+        ],
         showAddItemModal: false
       }
     case CLOSE_MODAL:
@@ -43,19 +47,30 @@ function itemReducer(state = initialState, action): appState {
       return { ...state, showAddItemModal: true }
 
     case OPEN_COMMENT:
-      const selectedItem = state.items.filter(i => i.text === action.text)
-      const otherItems = state.items.filter(i => i.text !== action.text)
-      const changedItems = selectedItem.map(item => ({
-        ...item,
-        showComments: true
-      }))
-      return { ...state, items: [...changedItems, ...otherItems] }
+      const newState = state.items.map(
+        item =>
+          (item.id === action.id ? { ...item, showComments: true } : item)
+      )
+      return { ...state, items: [...newState] }
 
     default:
-      console.log(action)
       return state
   }
 }
+
+function addModalReducer(state = false,action) {
+    case ADD_ITEM:
+    case CLOSE_MODAL:
+        return false
+    case OPEN_MODAL:
+        return true
+
+}
+
+const rootReducer = combineReducers({
+        items : itemReducer,
+        showAddItemModal : addModalReducer
+})
 
 export default itemReducer
 

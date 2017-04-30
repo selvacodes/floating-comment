@@ -11,12 +11,12 @@ const MyButton = styled(Button)`
    border-color: tomato;
  `
 
-const Item = ({ text, showComments, openCommentBox }) => (
+const Item = ({id , text, showComments, openCommentBox }) => (
   <Row>
     <Well>
       <h1> {text} </h1>
       <input type="text" />
-      <MyButton onClick={_ => openCommentBox(text)}>+</MyButton>
+      <MyButton onClick={_ => openCommentBox(id)}>+</MyButton>
     </Well>
     <FloaterContent showComments={showComments} />
   </Row>
@@ -25,9 +25,8 @@ const Item = ({ text, showComments, openCommentBox }) => (
 const ItemsStructure = ({ items, openCommentBox }) => (
   <Row>
     {items.map(item => (
-      <Item
-        text={item.text}
-        showComments={item.showComments}
+      <Item key={item.id}
+        {...item}
         openCommentBox={openCommentBox}
       />
     ))}
@@ -40,8 +39,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    openCommentBox: text => {
-      dispatch(openCommentBox(text))
+    openCommentBox: id => {
+      dispatch(openCommentBox(id))
     }
   }
 }
