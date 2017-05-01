@@ -1,6 +1,7 @@
-import { Well, Button } from "react-bootstrap"
 import React from "react"
 import { connect } from "react-redux"
+import { Well, Button } from "react-bootstrap"
+
 import { openModal } from "../containers/AddItemModal/action_creators"
 
 const AddItem = ({ openModal }) => {

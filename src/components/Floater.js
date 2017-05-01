@@ -1,9 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { connect } from "react-redux"
-
-import { Row, Well } from "react-bootstrap"
-import { getItems } from "../containers/Items/reducer"
+import { Well } from "react-bootstrap"
 
 const Floater = styled.div`
    position: absolute;
@@ -15,20 +12,14 @@ const FloaterParent = styled.div`
    display: ${props => (props.showComments ? "block" : "none")}
  `
 
-const FloaterContent = ({ showComments }) => (
+const FloaterContent = ({ showComments, comments }) => (
   <FloaterParent showComments={showComments}>
     <Floater>
       <Well>
-        <p>test</p>
+        {comments.map(cmt => <p key={cmt.id}>{cmt.text}</p>)}
       </Well>
     </Floater>
   </FloaterParent>
 )
-
-//const mapStateToProps = state => ({
-//items: getItems(state)
-//})
-
-//const Items = connect(mapStateToProps)(ItemsStructure)
 
 export default FloaterContent

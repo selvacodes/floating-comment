@@ -11,4 +11,3 @@ export function openModal() {
     type: OPEN_MODAL
   }
 }
-

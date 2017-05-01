@@ -1,9 +1,10 @@
-import { ADD_ITEM,  OPEN_COMMENT } from "../actions"
+import { ADD_ITEM, OPEN_COMMENT } from "../actions"
 import { initialState } from "../state"
+import R from "ramda"
 
 const containerState = initialState.items
 
-function itemReducer(state = containerState, action){
+function itemReducer(state = containerState, action) {
   switch (action.type) {
     case ADD_ITEM:
       return [
@@ -22,8 +23,14 @@ function itemReducer(state = containerState, action){
   }
 }
 
-
 export default itemReducer
 
-export const getItems = state => state.items
-
+export const getItemsWithComments = state => {
+  const items = R.prop("items")(state)
+  const comments = R.prop("comments")(state)
+  const itemsWithComments = items.map(item => {
+    const commentForItem = comments.filter(cmt => cmt.itemId == item.id)
+    return { ...item, comments: commentForItem }
+  })
+  return itemsWithComments
+}
