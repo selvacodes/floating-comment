@@ -9,5 +9,6 @@ export const initialState = {
     { id: 1, itemId: 1, text: "Hello First" },
     { id: 2, itemId: 1, text: "Hello First - two" },
     { id: 3, itemId: 2, text: "Hello Second" }
-  ]
+  ],
+  counter : 1
 }

@@ -1,4 +1,4 @@
-import { ADD_ITEM, OPEN_COMMENT } from "../actions"
+import { ADD_ITEM, OPEN_COMMENT , LOAD_ITEM } from "../actions"
 import { initialState } from "../state"
 import R from "ramda"
 
@@ -12,6 +12,12 @@ function itemReducer(state = containerState, action) {
         { id: state.length + 1, text: action.text, showComments: false }
       ]
 
+    case LOAD_ITEM:
+     console.log(action)
+      return [
+        ...state,
+        ...action.data
+      ]
     case OPEN_COMMENT:
       const newState = state.map(
         item => (item.id === action.id ? { ...item, showComments: true } : item)

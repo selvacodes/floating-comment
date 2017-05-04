@@ -1,4 +1,6 @@
 export const ADD_ITEM = "ITEM::ADD"
+export const LOAD_ITEM = "ITEM::LOAD"
 export const CLOSE_MODAL = "MODAL::CLOSE"
 export const OPEN_MODAL = "MODAL::OPEN"
 export const OPEN_COMMENT = "COMMENT::OPEN"
+export const COUNTER_INCREASE = "COUNTER::INCREASE"
